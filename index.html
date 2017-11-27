@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Syntax Parser</title>
+    <script src="script.js"></script>
+  </head>
+  <body>
+      <h1>Syntax Parser</h1>
+
+      <p>English syntax parser based on the phrase structure rules for 80-180 Nature of Language.</p>
+
+      <p>Submitting the form will populate the token and syntax tree sections. Tokens use the <a href="https://pythonprogramming.net/natural-language-toolkit-nltk-part-speech-tagging/">Natural Language Toolkit convention</a>.</p>
+
+      <p>Sometimes the part-of-speech tagger messes up. In that case, use the annotations field to indicate the correct tag: [ ["0", "DP"], ["2", "VB"] ]</p>
+
+      <p>In case of ambiguity, all valid syntax trees will be outputted.</p>
+
+      <form>
+          Sentence:<br>
+          <input type="text"  name="sentence"><br>
+          Part-of-Speech Annotations:<br>
+          <input type="text"  name="annotations"><br>
+          <input type="submit" value="Submit">
+      </form>
+
+      <h1>Tokens</h1>
+      <div id="div-token"></div>
+
+      <h1>Syntax Trees</h1>
+      <div id="div-tree"></div>
+
+  </body>
+</html>
