@@ -37,17 +37,20 @@ function include_results(response_text) {
 
     parsed = JSON.parse(response_text);
 
-    function helper(text, div_id) {
-        // Cite: https://www.w3schools.com/js/js_htmldom_nodes.asp
-        var para = document.createElement("p");
-        var node = document.createTextNode(text);
-        para.appendChild(node);
-        var div = document.getElementById(div_id);
-        div.appendChild(para);
-    }
+    // Cite: https://www.w3schools.com/js/js_htmldom_nodes.asp
+    var text = JSON.stringify(parsed['parts-of-speech'], null, 2);
+    var para = document.createElement("p");
+    var node = document.createTextNode(text);
+    para.appendChild(node);
+    var token_div = document.getElementById("div-token");
+    token_div.appendChild(para);
 
-    helper(JSON.stringify(parsed['parts-of-speech'], null, 2), "div-token");
-    helper(JSON.stringify(parsed['trees'], null, 2), "div-tree");
+    for (i in parsed['trees']) {
+        var div = document.createElement("div");
+        var tree_div = document.getElementById("div-tree");
+        div.innerHTML = parsed['trees'][i];
+        tree_div.appendChild(div);
+    }
 };
 
 callAjax(url, include_results);
