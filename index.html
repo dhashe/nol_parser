@@ -10,9 +10,11 @@
 
       <p>English syntax parser based on the phrase structure rules for 80-180 Nature of Language.</p>
 
-      <p>Submitting the form will populate the token and syntax tree sections. Tokens use the <a href="https://pythonprogramming.net/natural-language-toolkit-nltk-part-speech-tagging/">Natural Language Toolkit convention</a>.</p>
+      <p>Submitting the form will populate the token and syntax tree sections. The Token section uses the <a href="https://pythonprogramming.net/natural-language-toolkit-nltk-part-speech-tagging/">Natural Language Toolkit convention</a>, since that's the form that's actually used under the hood.</p>
 
-      <p>Sometimes the part-of-speech tagger messes up. In that case, use the annotations field to indicate the correct tag: [ ["0", "DP"], ["2", "VB"] ]</p>
+      <p>Sometimes the part-of-speech tagger messes up. In that case, use the annotations fields to indicate the correct tag. Indices are zero-indexed.</p>
+
+      <p>The phrase structure rules can be found <a href="psrs.html">here</a>.
 
       <p>In case of ambiguity, all valid syntax trees will be outputted.</p>
 
@@ -20,7 +22,9 @@
           Sentence:<br>
           <input type="text"  name="sentence"><br>
           Part-of-Speech Annotations:<br>
-          <input type="text"  name="annotations"><br>
+          <div id="container"></div>
+          <input type="button" name="add" value="Add annotation"
+                 onclick="add_annotation_field()"><br>
           <input type="submit" value="Submit">
       </form>
 

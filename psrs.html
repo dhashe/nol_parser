@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Phrase Structure Rules</title>
+  </head>
+  <body>
+      <h1>Phrase Structure Rules</h1>
+
+      <pre>
+CP -> TP | C TP
+TP -> DP VP | DP T VP
+DP -> DET NP
+NP -> N | AP NP | NP PP
+VP -> V | VP AP | VP PP | VP DP | VP DP DP | VP TP
+PP -> P DP
+AP -> A | AP A
+
+C -> 'MD'
+T -> 'MD'
+DP -> 'NNP' | 'NNPS' | 'PRP' | 'WP'
+DET -> 'DT' | 'PRP$' | 'WDT' | 'WP$'
+N -> 'NN'
+V -> 'VB' | 'VBD' | 'VBG' | 'VBN' | 'VBP' | 'VBZ'
+P -> 'IN' | 'TO'
+A -> 'RB' | 'RBR' | 'RBS' | 'WRB' | 'JJ' | 'JJR' | 'JJS'
+
+C -> 'C'
+T -> 'T'
+DP -> 'DP'
+DET -> 'DET'
+N -> 'N'
+V -> 'V'
+P -> 'P'
+A -> 'A'
+      </pre>
+
+  </body>
+</html>

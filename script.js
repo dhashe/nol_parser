@@ -12,26 +12,9 @@ function callAjax(url, callback){
     xmlhttp.send();
 }
 
-// Cite: https://stackoverflow.com/a/3855394
-var qs = (function(a) {
-    if (a == "") return {};
-    var b = {};
-    for (var i = 0; i < a.length; ++i)
-    {
-        var p=a[i].split('=', 2);
-        if (p.length == 1)
-            b[p[0]] = "";
-        else
-            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-    }
-    return b;
-})(window.location.search.substr(1).split('&'));
-
 // We use AWS Lambda for actual processing.
 var base_url = "https://64zej0ymo1.execute-api.us-east-2.amazonaws.com/prod";
-var url = base_url + "/nol_parser" +
-        "?sentence=" + qs["sentence"] +
-        "&annotations=" + qs["annotations"];
+var url = base_url + "/nol_parser" + window.location.search;
 
 function include_results(response_text) {
 
@@ -53,4 +36,26 @@ function include_results(response_text) {
     }
 };
 
-callAjax(url, include_results);
+// Cite: https://stackoverflow.com/a/14853880
+var counter = 0;
+function add_annotation_field() {
+    var container = document.getElementById("container");
+
+    function add_input(label, name) {
+        container.appendChild(document.createTextNode(label));
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = name;
+        container.appendChild(input);
+    }
+
+    add_input("Index: ", "index" + counter);
+    add_input("Value: ", "value" + counter);
+
+    container.appendChild(document.createElement("br"));
+    counter += 1;
+}
+
+if (window.location.search) {
+    callAjax(url, include_results);
+}
